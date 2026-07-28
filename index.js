@@ -1,12 +1,6 @@
 export default async function handler(req, res) {
-  const { path } = req.query;
-  const urlPath = Array.isArray(path) ? path.join('/') : path;
-  
-  const searchParams = new URLSearchParams(req.query);
-  searchParams.delete('path');
-  const queryString = searchParams.toString();
-  
-  const targetUrl = `https://generativelanguage.googleapis.com/${urlPath}${queryString ? '?' + queryString : ''}`;
+  // Hardcoded target URL for maximum reliability
+  const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${req.query.key}`;
   
   try {
     const response = await fetch(targetUrl, {
