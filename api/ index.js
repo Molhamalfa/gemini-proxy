@@ -1,5 +1,4 @@
-export default async function handler(req, res) {
-  // Hardcoded target URL for maximum reliability
+module.exports = async (req, res) => {
   const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${req.query.key}`;
   
   try {
@@ -14,4 +13,4 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}
+};
